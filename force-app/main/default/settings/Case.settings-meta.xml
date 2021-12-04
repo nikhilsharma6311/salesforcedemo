@@ -9,9 +9,9 @@
         <feedItemType>EmailMessageEvent</feedItemType>
     </caseFeedItemSettings>
     <closeCaseThroughStatusChange>false</closeCaseThroughStatusChange>
-    <defaultCaseOwner>saini.akash3046@gmail.com</defaultCaseOwner>
+    <defaultCaseOwner>knkumarnikhil93@wipro.com</defaultCaseOwner>
     <defaultCaseOwnerType>User</defaultCaseOwnerType>
-    <defaultCaseUser>saini.akash3046@gmail.com</defaultCaseUser>
+    <defaultCaseUser>knkumarnikhil93@wipro.com</defaultCaseUser>
     <emailToCase>
         <enableEmailToCase>false</enableEmailToCase>
     </emailToCase>

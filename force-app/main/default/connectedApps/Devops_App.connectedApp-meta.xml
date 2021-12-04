@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>knkumarnikhil93@gmail.com</contactEmail>
+    <iconUrl>https://login.salesforce.com/logos/Salesforce/Lightning/icon.png</iconUrl>
+    <label>Devops App</label>
+    <logoUrl>https://login.salesforce.com/logos/Salesforce/Lightning/logo.png</logoUrl>
+    <oauthConfig>
+        <callbackUrl>https://login.salesforce.com/services/oauth2/callback</callbackUrl>
+        <certificate>MIIDZDCCAkwCCQDpkzjkNg4vGjANBgkqhkiG9w0BAQsFADB0MQswCQYDVQQGEwJJTjELMAkGA1UECBMCSksxDjAMBgNVBAcTBWphbW11MQwwCgYDVQQKEwNhYmMxDDAKBgNVBAsTA3h5ejENMAsGA1UEAxMEdGVzdDEdMBsGCSqGSIb3DQEJARYOdGVzdEBnbWFpbC5jb20wHhcNMjExMjAyMTMwMjM1WhcNMjIxMjAyMTMwMjM1WjB0MQswCQYDVQQGEwJJTjELMAkGA1UECBMCSksxDjAMBgNVBAcTBWphbW11MQwwCgYDVQQKEwNhYmMxDDAKBgNVBAsTA3h5ejENMAsGA1UEAxMEdGVzdDEdMBsGCSqGSIb3DQEJARYOdGVzdEBnbWFpbC5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDAWfLRmGZ4brvtprobvNyiWi4Hhk4fKq/icsNf8zRpxXcXImfm/iNAlRI0sv4FKGZr86H3IimRCbEC0bRUaZieYMZMcu97aDmTpNmHxvv+3roHuk6Q7dNFDb7j8yGKRE+glaT6eH8oY32mJe+7tM7mQbwACchNoADnyssHaS+8cKWJDQ0ACFQ5skOftgPneoyMyJxvrCTOfNlt4uITKhijrFO8JiNTJU3iD9xDcBsypV5iRpcQ48dPaT9yRRMA1kK5mkLtHisfSNNlKIcYZvTDFAhsku/C4bQc5+e4deQbQ8Xhn3+RtotabO2cXA5AneDjWbCh8NDIYzSfJ7thY5SvAgMBAAEwDQYJKoZIhvcNAQELBQADggEBADzmI6EcRhCjHD9Iu44rNCvMnEgDoxjcq075l4M3vDTYLb2QOf/bEOlXSeEm2m8agH/qMMHPDmyL4VG0pDDP8yfmT/RbOsr9qTSjDz5RisLbEHHIofhuLqf+soOoMnNkINO8X7gupnbNY9uPMeEi1Le2VZ5GA8MAj7Y6CJSy3gGTk0dju74K/2ODNncBP9/ytfWaKEwJFTwE58MeOQ4dcu5TM6liyXJX8YisX3WLWegnFobGxnegOWxMCQiD3jv0lBgAfdXgBTSv2tSOBY6e5nIfsb3ypHOCskcf79hhbDfgivPAXqZ7qnAi3yym6ElDgFMyZc4lBJboU1As5AAV2Vw=</certificate>
+        <consumerKey>3MVG9pRzvMkjMb6ndoiMHAvezAwVkHmPsl.uHbvBWz5.JpbtR7lK0OQZ5PxFHMdl.0alYNpR1WuVhjc8RG5jp</consumerKey>
+        <scopes>Basic</scopes>
+        <scopes>Api</scopes>
+        <scopes>Web</scopes>
+        <scopes>RefreshToken</scopes>
+    </oauthConfig>
+</ConnectedApp>

@@ -81,11 +81,11 @@
         <type>CustomApplication</type>
     </appMenuItems>
     <appMenuItems>
-        <name>MySampleApp</name>
+        <name>Deployment_Connected_App</name>
         <type>ConnectedApp</type>
     </appMenuItems>
     <appMenuItems>
-        <name>DEVHUB_he98e3wyoppc0mwjlsbq</name>
+        <name>Devops_App</name>
         <type>ConnectedApp</type>
     </appMenuItems>
 </AppMenu>

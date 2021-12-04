@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>knkumarnikhil93@gmail.com</contactEmail>
+    <iconUrl>https://login.salesforce.com/logos/Salesforce/Salesforce/icon.png</iconUrl>
+    <label>Deployment Connected App</label>
+    <logoUrl>https://login.salesforce.com/logos/Salesforce/Salesforce/logo.png</logoUrl>
+    <oauthConfig>
+        <callbackUrl>http://localhost:1717/OauthRedirect</callbackUrl>
+        <consumerKey>3MVG9pRzvMkjMb6ndoiMHAvezA0oo1Cy0K0M6QDXFii2wF604pMXjBf6_ZYQwxwLkRjZnTyZ60i0EXMGOYk06</consumerKey>
+        <scopes>Basic</scopes>
+        <scopes>Api</scopes>
+        <scopes>Web</scopes>
+        <scopes>Full</scopes>
+        <scopes>Chatter</scopes>
+        <scopes>CustomApplications</scopes>
+        <scopes>RefreshToken</scopes>
+        <scopes>OpenID</scopes>
+        <scopes>CustomPermissions</scopes>
+        <scopes>Wave</scopes>
+        <scopes>Eclair</scopes>
+        <scopes>Pardot</scopes>
+        <scopes>Lightning</scopes>
+        <scopes>Content</scopes>
+        <scopes>CDPIngest</scopes>
+        <scopes>CDPProfile</scopes>
+        <scopes>CDPQuery</scopes>
+    </oauthConfig>
+</ConnectedApp>
