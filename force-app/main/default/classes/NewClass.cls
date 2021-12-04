@@ -1,5 +1,5 @@
 //Hello
-//Hello 123456789
+//Hello
 
 public with sharing class NewClass {
   public NewClass() {
