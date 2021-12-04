@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>New_Custom_label__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Checkbox123---------------</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Checkbox</inlineHelpText>
+    <label>New_Custom_label</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

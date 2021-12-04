@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Bathroom Hookup --></label>
+    <name>Bathroom_Hookup__c</name>
+    <picklistValues>
+        <masterLabel>No Shower</masterLabel>
+        <translation><!-- No Shower --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Tub/Shower Combo</masterLabel>
+        <translation><!-- Tub/Shower Combo --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Walk-In Shower</masterLabel>
+        <translation><!-- Walk-In Shower --></translation>
+    </picklistValues>
+</CustomFieldTranslation>
