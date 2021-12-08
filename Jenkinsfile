@@ -53,7 +53,7 @@ println('Please enter both Previous and Latest commit IDs')
 
 if (TestLevel=='RunSpecifiedTests')
 {
-if (params.SpecifyTestClass == '')
+if (params.SpecifiedTestsRun == '')
 {
 catchError(buildResult: 'FAILURE', stageResult: 'FAILURE')
 {
@@ -197,7 +197,7 @@ rc = command "${toolbelt}/sfdx force:mdapi:deploy -d ${DEPLOYDIR} --checkonly --
 else if (TestLevel=='RunSpecifiedTests')
 {
 println TestLevel
-def Testclass = SpecifyTestClass.replaceAll('\\s','')
+def Testclass = SpecifiedTestsRun.replaceAll('\\s','')
 println Testclass
 rc = command "${toolbelt}/sfdx force:mdapi:deploy -d ${DEPLOYDIR} --checkonly --wait 10 --targetusername ${SF_USERNAME} --TestLevel ${TestLevel} -r ${Testclass} --verbose --loglevel fatal"
 }
@@ -281,7 +281,7 @@ rc = command "${toolbelt}/sfdx force:mdapi:deploy -d ${DEPLOYDIR} --wait 10 --ta
 else if (TestLevel=='RunSpecifiedTests')
 {
 println TestLevel
-def Testclass = SpecifyTestClass.replaceAll('\\s','')
+def Testclass = SpecifiedTestsRun.replaceAll('\\s','')
 println Testclass
 rc = command "${toolbelt}/sfdx force:mdapi:deploy -d ${DEPLOYDIR} --wait 10 --targetusername ${SF_USERNAME} --TestLevel ${TestLevel} -r ${Testclass} --verbose --loglevel fatal"
 }
