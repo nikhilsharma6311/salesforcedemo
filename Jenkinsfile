@@ -141,7 +141,7 @@ else if ( folder && file )
 dir("${WORKSPACE}/${DELTACHANGES}")
 {
 println "Force-app folder exist, destructiveChanges.xml exist"
-if (DeploymentType=='Deploy Only')
+if (DeploymentType=='Deploy only')
 {
 println "You selected deploy only so deleting destructivechanges.xml to avoid component deletion."
 bat "del /f destructiveChanges.xml"
@@ -153,15 +153,15 @@ println "Both deletion and deployment will be performed."
 rc = command "${toolbelt}/sfdx force:source:convert -d ../${DEPLOYDIR}"
 bat "copy destructiveChanges.xml ..\\${DEPLOYDIR}"
 }
-else if (DeploymentType=='Delete Only')
+else if (DeploymentType=='Delete only')
 {
 println "You selected Delete only but force-app folder also exist. So deleting the force-app folder to avoid deployment."
 bat "echo y | rmdir /s force-app"
 bat "copy ..\\manifest\\package.xml ."
 }
-else if (DeploymentType=='Validate Only')
+else if (DeploymentType=='Validate only')
 {
-println "You selected Validate Only, so only validation will be performed."
+println "You selected Validate only, so only validation will be performed."
 rc = command "${toolbelt}/sfdx force:source:convert -d ../${DEPLOYDIR}"
 }
 }
@@ -177,9 +177,9 @@ println "There is nothing to be deployed or deleted."
 
 
 
-stage('Validate Only')
+stage('Validate only')
 {
-if (DeploymentType=='Validate Only')
+if (DeploymentType=='Validate only')
 {
 script
 {
@@ -220,7 +220,7 @@ error 'Validation failed.'
 
 stage('Deploy and Run Tests')
 {
-if (DeploymentType=='Deploy Only')
+if (DeploymentType=='Deploy only')
 {
 script
 {
@@ -253,7 +253,7 @@ error 'Salesforce deployment failed.'
 
 stage('Delete Components')
 {
-if (DeploymentType=='Delete Only')
+if (DeploymentType=='Delete only')
 {
 rc = command "${toolbelt}/sfdx force:mdapi:deploy -u ${SF_USERNAME} -d ${DELTACHANGES} -w 1"
 
@@ -296,7 +296,7 @@ error 'Salesforce deployment failed.'
 
 /* stage('Save Artifacts')
 {
-if (DeploymentType=='Delete Only')
+if (DeploymentType=='Delete only')
 {
 
 bat "xcopy ${DELTACHANGES} D:\\Artifacts /EHCI"
@@ -311,7 +311,7 @@ bat "xcopy ${DEPLOYDIR} D:\\Artifacts /EHCI"
 stage('EMail Notification')
 {
 bat 'chdir'
-if (DeploymentType=='Delete Only')
+if (DeploymentType=='Delete only')
 {
 dir("${WORKSPACE}/${DELTACHANGES}")
 {
