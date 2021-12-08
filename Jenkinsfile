@@ -192,14 +192,14 @@ rc = command "${toolbelt}/sfdx force:mdapi:deploy -d ${DEPLOYDIR} --checkonly --
 else if (TestLevel=='RunLocalTests')
 {
 println TestLevel
-rc = command "${toolbelt}/sfdx force:mdapi:deploy -d ${DEPLOYDIR} --checkonly --wait 10 --targetusername ${SF_USERNAME} --TestLevel ${TestLevel} --verbose --loglevel fatal"
+rc = command "${toolbelt}/sfdx force:mdapi:deploy -d ${DEPLOYDIR} --checkonly --wait 10 --targetusername ${SF_USERNAME} --testlevel ${TestLevel} --verbose --loglevel fatal"
 }
 else if (TestLevel=='RunSpecifiedTests')
 {
 println TestLevel
 def Testclass = SpecifiedTestsRun.replaceAll('\\s','')
 println Testclass
-rc = command "${toolbelt}/sfdx force:mdapi:deploy -d ${DEPLOYDIR} --checkonly --wait 10 --targetusername ${SF_USERNAME} --TestLevel ${TestLevel} -r ${Testclass} --verbose --loglevel fatal"
+rc = command "${toolbelt}/sfdx force:mdapi:deploy -d ${DEPLOYDIR} --checkonly --wait 10 --targetusername ${SF_USERNAME} --testlevel ${TestLevel} -r ${Testclass} --verbose --loglevel fatal"
 }
 
 else (rc != 0)
@@ -232,14 +232,14 @@ rc = command "${toolbelt}/sfdx force:mdapi:deploy -d ${DEPLOYDIR} --wait 10 --ta
 else if (TestLevel=='RunLocalTests')
 {
 println TestLevel
-rc = command "${toolbelt}/sfdx force:mdapi:deploy -d ${DEPLOYDIR} --wait 10 --targetusername ${SF_USERNAME} --TestLevel ${TestLevel} --verbose --loglevel fatal"
+rc = command "${toolbelt}/sfdx force:mdapi:deploy -d ${DEPLOYDIR} --wait 10 --targetusername ${SF_USERNAME} --testlevel ${TestLevel} --verbose --loglevel fatal"
 }
 else if (TestLevel=='RunSpecifiedTests')
 {
 println TestLevel
 def Testclass = SpecifiedTestsRun.replaceAll('\\s','')
 println Testclass
-rc = command "${toolbelt}/sfdx force:mdapi:deploy -d ${DEPLOYDIR} --wait 10 --targetusername ${SF_USERNAME} --TestLevel ${TestLevel} -r ${Testclass} --verbose --loglevel fatal"
+rc = command "${toolbelt}/sfdx force:mdapi:deploy -d ${DEPLOYDIR} --wait 10 --targetusername ${SF_USERNAME} --testlevel ${TestLevel} -r ${Testclass} --verbose --loglevel fatal"
 }
 else (rc != 0)
 {
@@ -276,14 +276,14 @@ rc = command "${toolbelt}/sfdx force:mdapi:deploy -d ${DEPLOYDIR} --wait 10 --ta
 else if (TestLevel=='RunLocalTests')
 {
 println TestLevel
-rc = command "${toolbelt}/sfdx force:mdapi:deploy -d ${DEPLOYDIR} --wait 10 --targetusername ${SF_USERNAME} --TestLevel ${TestLevel} --verbose --loglevel fatal"
+rc = command "${toolbelt}/sfdx force:mdapi:deploy -d ${DEPLOYDIR} --wait 10 --targetusername ${SF_USERNAME} --testlevel ${TestLevel} --verbose --loglevel fatal"
 }
 else if (TestLevel=='RunSpecifiedTests')
 {
 println TestLevel
 def Testclass = SpecifiedTestsRun.replaceAll('\\s','')
 println Testclass
-rc = command "${toolbelt}/sfdx force:mdapi:deploy -d ${DEPLOYDIR} --wait 10 --targetusername ${SF_USERNAME} --TestLevel ${TestLevel} -r ${Testclass} --verbose --loglevel fatal"
+rc = command "${toolbelt}/sfdx force:mdapi:deploy -d ${DEPLOYDIR} --wait 10 --targetusername ${SF_USERNAME} --testlevel ${TestLevel} -r ${Testclass} --verbose --loglevel fatal"
 }
 if (rc != 0)
 {
