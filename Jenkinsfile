@@ -117,7 +117,7 @@ stage('Delta changes')
 {
 script
 {
-bat "echo y | sfdx plugins:install sfpowerkit"
+// bat "echo y | sfdx plugins:install sfpowerkit"
 rc = command "${toolbelt}/sfdx sfpowerkit:project:diff --revisionfrom %PreviousCommitId% --revisionto %LatestCommitId% --output ${DELTACHANGES} --apiversion ${APIVERSION} -x"
 
 def folder = fileExists 'DeltaChanges/force-app'
