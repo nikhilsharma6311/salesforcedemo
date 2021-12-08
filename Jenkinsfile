@@ -51,7 +51,7 @@ println('Please enter both Previous and Latest commit IDs')
 //Check if Test classes are mentioned in case of RunSpecifiedTests.
 //----------------------------------------------------------------------
 
-if (TestLevel=='RunSpecifiedTests')
+if (TESTLEVEL=='RunSpecifiedTests')
 {
 if (params.SpecifiedTestsRun == '')
 {
@@ -117,7 +117,7 @@ stage('Delta changes')
 {
 script
 {
-// bat "echo y | sfdx plugins:install sfpowerkit"
+//bat "echo y | sfdx plugins:install sfpowerkit"
 rc = command "${toolbelt}/sfdx sfpowerkit:project:diff --revisionfrom %PreviousCommitId% --revisionto %LatestCommitId% --output ${DELTACHANGES} --apiversion ${APIVERSION} -x"
 
 def folder = fileExists 'DeltaChanges/force-app'
@@ -141,25 +141,25 @@ else if ( folder && file )
 dir("${WORKSPACE}/${DELTACHANGES}")
 {
 println "Force-app folder exist, destructiveChanges.xml exist"
-if (DeploymentType=='Deploy only')
+if (Deployment_Type=='Deploy only')
 {
-println "You selected deploy only so deleting destructivechanges.xml to avoid component deletion."
+println "You selected Deploy only so deleting destructivechanges.xml to avoid component deletion."
 bat "del /f destructiveChanges.xml"
 rc = command "${toolbelt}/sfdx force:source:convert -d ../${DEPLOYDIR}"
 }
-else if (DeploymentType=='Delete and Deploy')
+else if (Deployment_Type=='Deploy and Delete')
 {
 println "Both deletion and deployment will be performed."
 rc = command "${toolbelt}/sfdx force:source:convert -d ../${DEPLOYDIR}"
 bat "copy destructiveChanges.xml ..\\${DEPLOYDIR}"
 }
-else if (DeploymentType=='Delete only')
+else if (Deployment_Type=='Delete only')
 {
 println "You selected Delete only but force-app folder also exist. So deleting the force-app folder to avoid deployment."
 bat "echo y | rmdir /s force-app"
 bat "copy ..\\manifest\\package.xml ."
 }
-else if (DeploymentType=='Validate only')
+else if (Deployment_Type=='Validate only')
 {
 println "You selected Validate only, so only validation will be performed."
 rc = command "${toolbelt}/sfdx force:source:convert -d ../${DEPLOYDIR}"
@@ -179,27 +179,27 @@ println "There is nothing to be deployed or deleted."
 
 stage('Validate only')
 {
-if (DeploymentType=='Validate only')
+if (Deployment_Type=='Validate only')
 {
 script
 {
 
-if (TestLevel=='NoTestRun')
+if (TESTLEVEL=='NoTestRun')
 {
-println TestLevel
+println TESTLEVEL
 rc = command "${toolbelt}/sfdx force:mdapi:deploy -d ${DEPLOYDIR} --checkonly --wait 10 --targetusername ${SF_USERNAME} "
 }
-else if (TestLevel=='RunLocalTests')
+else if (TESTLEVEL=='RunLocalTests')
 {
-println TestLevel
-rc = command "${toolbelt}/sfdx force:mdapi:deploy -d ${DEPLOYDIR} --checkonly --wait 10 --targetusername ${SF_USERNAME} --TestLevel ${TestLevel} --verbose --loglevel fatal"
+println TESTLEVEL
+rc = command "${toolbelt}/sfdx force:mdapi:deploy -d ${DEPLOYDIR} --checkonly --wait 10 --targetusername ${SF_USERNAME} --testlevel ${TESTLEVEL} --verbose --loglevel fatal"
 }
-else if (TestLevel=='RunSpecifiedTests')
+else if (TESTLEVEL=='RunSpecifiedTests')
 {
-println TestLevel
+println TESTLEVEL
 def Testclass = SpecifiedTestsRun.replaceAll('\\s','')
 println Testclass
-rc = command "${toolbelt}/sfdx force:mdapi:deploy -d ${DEPLOYDIR} --checkonly --wait 10 --targetusername ${SF_USERNAME} --TestLevel ${TestLevel} -r ${Testclass} --verbose --loglevel fatal"
+rc = command "${toolbelt}/sfdx force:mdapi:deploy -d ${DEPLOYDIR} --checkonly --wait 10 --targetusername ${SF_USERNAME} --testlevel ${TESTLEVEL} -r ${Testclass} --verbose --loglevel fatal"
 }
 
 else (rc != 0)
@@ -220,26 +220,26 @@ error 'Validation failed.'
 
 stage('Deploy and Run Tests')
 {
-if (DeploymentType=='Deploy only')
+if (Deployment_Type=='Deploy only')
 {
 script
 {
-if (TestLevel=='NoTestRun')
+if (TESTLEVEL=='NoTestRun')
 {
-println TestLevel
+println TESTLEVEL
 rc = command "${toolbelt}/sfdx force:mdapi:deploy -d ${DEPLOYDIR} --wait 10 --targetusername ${SF_USERNAME} "
 }
-else if (TestLevel=='RunLocalTests')
+else if (TESTLEVEL=='RunLocalTests')
 {
-println TestLevel
-rc = command "${toolbelt}/sfdx force:mdapi:deploy -d ${DEPLOYDIR} --wait 10 --targetusername ${SF_USERNAME} --TestLevel ${TestLevel} --verbose --loglevel fatal"
+println TESTLEVEL
+rc = command "${toolbelt}/sfdx force:mdapi:deploy -d ${DEPLOYDIR} --wait 10 --targetusername ${SF_USERNAME} --testlevel ${TESTLEVEL} --verbose --loglevel fatal"
 }
-else if (TestLevel=='RunSpecifiedTests')
+else if (TESTLEVEL=='RunSpecifiedTests')
 {
-println TestLevel
+println TESTLEVEL
 def Testclass = SpecifiedTestsRun.replaceAll('\\s','')
 println Testclass
-rc = command "${toolbelt}/sfdx force:mdapi:deploy -d ${DEPLOYDIR} --wait 10 --targetusername ${SF_USERNAME} --TestLevel ${TestLevel} -r ${Testclass} --verbose --loglevel fatal"
+rc = command "${toolbelt}/sfdx force:mdapi:deploy -d ${DEPLOYDIR} --wait 10 --targetusername ${SF_USERNAME} --testlevel ${TESTLEVEL} -r ${Testclass} --verbose --loglevel fatal"
 }
 else (rc != 0)
 {
@@ -253,7 +253,7 @@ error 'Salesforce deployment failed.'
 
 stage('Delete Components')
 {
-if (DeploymentType=='Delete only')
+if (Deployment_Type=='Delete only')
 {
 rc = command "${toolbelt}/sfdx force:mdapi:deploy -u ${SF_USERNAME} -d ${DELTACHANGES} -w 1"
 
@@ -262,28 +262,28 @@ rc = command "${toolbelt}/sfdx force:mdapi:deploy -u ${SF_USERNAME} -d ${DELTACH
 
 
 
-stage('Delete and Deploy')
+stage('Deploy and Delete')
 {
-if (DeploymentType=='Delete and Deploy')
+if (Deployment_Type=='Deploy and Delete')
 {
 script
 {
-if (TestLevel=='NoTestRun')
+if (TESTLEVEL=='NoTestRun')
 {
-println TestLevel
+println TESTLEVEL
 rc = command "${toolbelt}/sfdx force:mdapi:deploy -d ${DEPLOYDIR} --wait 10 --targetusername ${SF_USERNAME} "
 }
-else if (TestLevel=='RunLocalTests')
+else if (TESTLEVEL=='RunLocalTests')
 {
-println TestLevel
-rc = command "${toolbelt}/sfdx force:mdapi:deploy -d ${DEPLOYDIR} --wait 10 --targetusername ${SF_USERNAME} --TestLevel ${TestLevel} --verbose --loglevel fatal"
+println TESTLEVEL
+rc = command "${toolbelt}/sfdx force:mdapi:deploy -d ${DEPLOYDIR} --wait 10 --targetusername ${SF_USERNAME} --testlevel ${TESTLEVEL} --verbose --loglevel fatal"
 }
-else if (TestLevel=='RunSpecifiedTests')
+else if (TESTLEVEL=='RunSpecifiedTests')
 {
-println TestLevel
+println TESTLEVEL
 def Testclass = SpecifiedTestsRun.replaceAll('\\s','')
 println Testclass
-rc = command "${toolbelt}/sfdx force:mdapi:deploy -d ${DEPLOYDIR} --wait 10 --targetusername ${SF_USERNAME} --TestLevel ${TestLevel} -r ${Testclass} --verbose --loglevel fatal"
+rc = command "${toolbelt}/sfdx force:mdapi:deploy -d ${DEPLOYDIR} --wait 10 --targetusername ${SF_USERNAME} --testlevel ${TESTLEVEL} -r ${Testclass} --verbose --loglevel fatal"
 }
 if (rc != 0)
 {
@@ -296,7 +296,7 @@ error 'Salesforce deployment failed.'
 
 /* stage('Save Artifacts')
 {
-if (DeploymentType=='Delete only')
+if (Deployment_Type=='Delete only')
 {
 
 bat "xcopy ${DELTACHANGES} D:\\Artifacts /EHCI"
@@ -311,14 +311,14 @@ bat "xcopy ${DEPLOYDIR} D:\\Artifacts /EHCI"
 stage('EMail Notification')
 {
 bat 'chdir'
-if (DeploymentType=='Delete only')
+if (Deployment_Type=='Delete only')
 {
 dir("${WORKSPACE}/${DELTACHANGES}")
 {
 emailext attachmentsPattern: 'destructiveChanges.xml', attachLog: true, body: '$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS: $BUILD_URL', subject: '$DEFAULT_SUBJECT', to: '$DEFAULT_RECIPIENTS, knkumarnikhil93@gmail.com'
 }
 }
-else if(DeploymentType=='Delete and Deploy')
+else if(Deployment_Type=='Deploy and Delete')
 {
 dir("${WORKSPACE}/${DEPLOYDIR}")
 {
