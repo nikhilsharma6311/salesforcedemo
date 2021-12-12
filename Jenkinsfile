@@ -327,7 +327,7 @@ if (DeploymentType=='Delete only')
 {
 dir("${WORKSPACE}/${DELTACHANGES}")
 {
-emailext attachmentsPattern: 'destructiveChanges.xml', attachLog: true, body: '$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS: $BUILD_URL', subject: '$DEFAULT_SUBJECT', to: '$DEFAULT_RECIPIENT'
+emailext attachmentsPattern: 'destructiveChanges.xml', attachLog: true, body: '$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS: $BUILD_URL', subject: '$DEFAULT_SUBJECT', to: 'knkumarnikhil93@gmail.com'
 }
 }
 else if(DeploymentType=='Deploy and Delete')
@@ -335,7 +335,7 @@ else if(DeploymentType=='Deploy and Delete')
 dir("${WORKSPACE}/${DEPLOYDIR}")
 {
 bat 'chdir'
-emailext attachmentsPattern: 'package.xml, destructiveChanges.xml', attachLog: true, body: '$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS: $BUILD_URL', subject: '$DEFAULT_SUBJECT', to: '$DEFAULT_RECIPIENT'
+emailext attachmentsPattern: 'package.xml, destructiveChanges.xml', attachLog: true, body: '$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS: $BUILD_URL', subject: '$DEFAULT_SUBJECT', to: 'knkumarnikhil93@gmail.com'
 }
 }
 else
@@ -343,7 +343,7 @@ else
 dir("${WORKSPACE}/${DEPLOYDIR}")
 {
 bat 'chdir'
-emailext attachmentsPattern: 'package.xml', attachLog: true, body: '$DEFAULT_CONTENT', subject: '$DEFAULT_SUBJECT', to: '$DEFAULT_RECIPIENT'
+emailext attachmentsPattern: 'package.xml', attachLog: true, body: '$DEFAULT_CONTENT', subject: '$DEFAULT_SUBJECT', to: 'knkumarnikhil93@gmail.com'
 }
 }
 }
