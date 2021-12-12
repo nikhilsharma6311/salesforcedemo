@@ -14,6 +14,18 @@ def DELTACHANGES = 'deltachanges'
 def DEPLOYDIR = 'toDeploy'
 def APIVERSION = '52.0'
 def toolbelt = tool 'sfdxtool'
+  
+  
+properties([parameters([string('PreviousCommitId'), string('LatestCommitId'), [$class: 'ChoiceParameter', choiceType: 'PT_SINGLE_SELECT', filterLength: 1, filterable: false, name: 'DeploymentType', randomName: 'choice-parameter-3869384140400', script: [$class: 'GroovyScript', fallbackScript: [classpath: [], sandbox: false, script: ''], script: [classpath: [], sandbox: false, script: 'return[\'Validate only\',\'Deploy only\',\'Delete only\',\'Deploy and Delete\']']]], [$class: 'CascadeChoiceParameter', choiceType: 'PT_SINGLE_SELECT', filterLength: 1, filterable: false, name: 'TestLevel', randomName: 'choice-parameter-3869396358700', referencedParameters: 'DeploymentType', script: [$class: 'GroovyScript', fallbackScript: [classpath: [], sandbox: false, script: ''], script: [classpath: [], sandbox: false, script: '''if((DeploymentType.equals("Validate only")) || (DeploymentType.equals("Deploy only")) || (DeploymentType.equals("Deploy and Delete"))){
+				return[\'NoTestRun\',\'RunLocalTests\',\'RunSpecifiedTests\']
+				}
+				else {
+				return[\'Test not applicable while deleting components\']
+				}
+				''']]], [$class: 'DynamicReferenceParameter', choiceType: 'ET_FORMATTED_HTML', name: 'SpecifiedTestsRun', omitValueField: true, randomName: 'choice-parameter-3869401084700', referencedParameters: 'TestLevel', script: [$class: 'GroovyScript', fallbackScript: [classpath: [], sandbox: false, script: ''], script: [classpath: [], sandbox: false, script: '''if(TestLevel.equals("RunSpecifiedTests")){
+				inputBox="<textarea rows=\'9\' cols=\'70\' name=\'value\'></textarea>"
+				return inputBox
+					}''']]]])])
 
 //----------------------------------------------------------------------
 //Check if Previous and Latest commit IDs are provided.
