@@ -16,7 +16,7 @@ def DELTACHANGES = 'deltachanges'
 def DEPLOYDIR = 'toDeploy'
 def APIVERSION = '52.0'
 def toolbelt = tool 'sfdxtool'
-File file = new File("out.txt")
+File abc = new File("out.txt")
   
   
 properties([parameters([string('PreviousCommitId'), string('LatestCommitId'), [$class: 'ChoiceParameter', choiceType: 'PT_SINGLE_SELECT', filterLength: 1, filterable: false, name: 'DeploymentType', randomName: 'choice-parameter-3869384140400', script: [$class: 'GroovyScript', fallbackScript: [classpath: [], sandbox: false, script: ''], script: [classpath: [], sandbox: false, script: 'return[\'Validate only\',\'Deploy only\',\'Delete only\',\'Deploy and Delete\']']]], [$class: 'CascadeChoiceParameter', choiceType: 'PT_SINGLE_SELECT', filterLength: 1, filterable: false, name: 'TestLevel', randomName: 'choice-parameter-3869396358700', referencedParameters: 'DeploymentType', script: [$class: 'GroovyScript', fallbackScript: [classpath: [], sandbox: false, script: ''], script: [classpath: [], sandbox: false, script: '''if((DeploymentType.equals("Validate only")) || (DeploymentType.equals("Deploy only")) || (DeploymentType.equals("Deploy and Delete"))){
@@ -118,8 +118,8 @@ withCredentials([file(credentialsId: SERVER_KEY_CREDENTIALS_ID, variable: 'serve
 
 
 stage('Authorize to Salesforce') {
-rc = command "${toolbelt}/sfdx force:auth:logout --targetusername ${SF_USERNAME} -p" >> file
-rc = command "${toolbelt}/sfdx force:auth:jwt:grant --instanceurl ${SF_INSTANCE_URL} --clientid ${SF_CONSUMER_KEY} --jwtkeyfile ${server_key_file} --username ${SF_USERNAME} --setalias ${SF_USERNAME}" >> file
+rc = command "${toolbelt}/sfdx force:auth:logout --targetusername ${SF_USERNAME} -p" >> abc
+rc = command "${toolbelt}/sfdx force:auth:jwt:grant --instanceurl ${SF_INSTANCE_URL} --clientid ${SF_CONSUMER_KEY} --jwtkeyfile ${server_key_file} --username ${SF_USERNAME} --setalias ${SF_USERNAME}" >> abc
 if (rc != 0) {
 	
 error 'Salesforce org authorization failed.'
