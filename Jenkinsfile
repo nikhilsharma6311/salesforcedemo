@@ -118,7 +118,7 @@ withCredentials([file(credentialsId: SERVER_KEY_CREDENTIALS_ID, variable: 'serve
 
 
 stage('Authorize to Salesforce') {
-rc = command "${toolbelt}/sfdx force:auth:logout --targetusername ${SF_USERNAME} -p" >> abc
+rc = abc.append(command "${toolbelt}/sfdx force:auth:logout --targetusername ${SF_USERNAME} -p")
 rc = command "${toolbelt}/sfdx force:auth:jwt:grant --instanceurl ${SF_INSTANCE_URL} --clientid ${SF_CONSUMER_KEY} --jwtkeyfile ${server_key_file} --username ${SF_USERNAME} --setalias ${SF_USERNAME}" >> abc
 if (rc != 0) {
 	
