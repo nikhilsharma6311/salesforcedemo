@@ -1,7 +1,9 @@
 #!groovy
 
-
-
+def emailcode() {
+        emailext attachLog: true, body: '$DEFAULT_CONTENT', subject: 'Fail in $STAGE_NAME', to: 'knkumarnikhil93@gmail.com'
+        echo "Build falid"
+            }
 node {
 
 
