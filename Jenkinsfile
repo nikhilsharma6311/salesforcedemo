@@ -94,7 +94,7 @@ println('Unable to Clean WorkSpace.')
 
 
 stage('checkout source') {
-checkout scm
+git branch: 'demo', url: 'https://github.com/nikhilsharma6311/salesforcedemo.git'
 }
 
 
